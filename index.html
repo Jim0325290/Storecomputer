@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="zh-TW">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>店家專用計算機</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="print.css" media="print">
+    <link rel="manifest" href="manifest.json">
+    <meta name="theme-color" content="#ffffff">
+</head>
+<body>
+
+    <div class="main-container">
+        <div class="calculator-section">
+            <div class="display-container">
+                <div class="previous-operand" id="previous-operand"></div>
+                <div class="current-operand" id="current-operand">0</div>
+            </div>
+            
+            <div class="buttons-grid">
+                <button class="btn fn" data-action="clear">C</button>
+                <button class="btn fn" data-action="delete">CE</button>
+                <button class="btn fn" data-operation="÷">÷</button>
+                <button class="btn fn" data-operation="×">×</button>
+                
+                <button class="btn" data-number="7">7</button>
+                <button class="btn" data-number="8">8</button>
+                <button class="btn" data-number="9">9</button>
+                <button class="btn fn" data-operation="-">−</button>
+                
+                <button class="btn" data-number="4">4</button>
+                <button class="btn" data-number="5">5</button>
+                <button class="btn" data-number="6">6</button>
+                <button class="btn fn" data-operation="+">+</button>
+                
+                <button class="btn" data-number="1">1</button>
+                <button class="btn" data-number="2">2</button>
+                <button class="btn" data-number="3">3</button>
+                <button class="btn equal-btn span-v-2" data-action="compute">=</button>
+                
+                <button class="btn span-h-2" data-number="0">0</button>
+                <button class="btn" data-number=".">.</button>
+            </div>
+        </div>
+
+        <div class="history-section">
+            <div class="shop-info">
+                <h3>列印設定</h3>
+                <input type="text" id="shop-name-input" placeholder="請輸入店家名稱 (例如：好味便當)" value="店家名稱">
+                <button id="print-btn" class="print-button">🖨️ 列印明細</button>
+                <button id="clear-history-btn" class="clear-history-button">🗑️ 清除紀錄</button>
+            </div>
+            
+            <div class="history-list-container">
+                <h3>計算紀錄</h3>
+                <ul id="history-list">
+                    </ul>
+            </div>
+            <div class="history-footer">
+                總筆數: <span id="total-count">0</span>
+            </div>
+        </div>
+    </div>
+
+    <div id="print-header" class="print-only">
+        <h1 id="print-shop-name">店家名稱</h1>
+        <p>列印時間：<span id="print-date"></span></p>
+        <hr>
+    </div>
+
+    <div id="print-content" class="print-only"></div>
+
+    <script src="script.js"></script>
+</body>
+</html>
