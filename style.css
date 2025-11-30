@@ -1,0 +1,221 @@
+:root {
+    --bg-color: #f4f4f9;
+    --calc-bg: #ffffff;
+    --btn-bg: #e0e0e0;
+    --btn-text: #333;
+    --btn-fn-bg: #ff9f43; /* 橘色功能鍵 */
+    --btn-fn-text: #fff;
+    --display-bg: #222;
+    --display-text: #00ff00; /* 經典計算機綠 */
+}
+
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    background-color: var(--bg-color);
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    overflow: hidden; /* 防止整體頁面捲動 */
+}
+
+.main-container {
+    display: flex;
+    width: 95%;
+    max-width: 1200px;
+    height: 90vh;
+    background: white;
+    border-radius: 15px;
+    box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+    overflow: hidden;
+}
+
+/* --- 左側計算機 --- */
+.calculator-section {
+    flex: 1.5;
+    padding: 20px;
+    display: flex;
+    flex-direction: column;
+    border-right: 1px solid #ddd;
+}
+
+.display-container {
+    background-color: var(--display-bg);
+    color: var(--display-text);
+    padding: 20px;
+    border-radius: 10px;
+    text-align: right;
+    margin-bottom: 20px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    min-height: 120px;
+}
+
+.previous-operand {
+    font-size: 1.5rem;
+    color: rgba(0, 255, 0, 0.6);
+    min-height: 30px;
+}
+
+.current-operand {
+    font-size: 4rem; /* 顯示器字體 >= 40px */
+    font-weight: bold;
+    word-wrap: break-word;
+    word-break: break-all;
+}
+
+.buttons-grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    grid-template-rows: repeat(5, 1fr);
+    gap: 10px;
+    flex-grow: 1;
+}
+
+.btn {
+    font-size: 2rem; /* 按鍵字體 >= 28px */
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
+    background-color: var(--btn-bg);
+    color: var(--btn-text);
+    transition: opacity 0.2s;
+    font-weight: 600;
+    min-height: 70px; /* 按鍵高度 >= 60px */
+}
+
+.btn:active {
+    opacity: 0.7;
+}
+
+.btn.fn {
+    background-color: var(--btn-fn-bg);
+    color: var(--btn-fn-text);
+}
+
+.btn.equal-btn {
+    background-color: #28a745;
+    color: white;
+    grid-column: 4;
+    grid-row: 4 / span 2; /* 跨兩列 */
+    height: 100%;
+}
+
+.span-h-2 {
+    grid-column: span 2;
+}
+
+/* --- 右側歷史紀錄 --- */
+.history-section {
+    flex: 1;
+    padding: 20px;
+    display: flex;
+    flex-direction: column;
+    background-color: #f9f9f9;
+}
+
+.shop-info {
+    margin-bottom: 15px;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+.shop-info input {
+    padding: 10px;
+    font-size: 1.2rem;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+}
+
+.print-button {
+    padding: 12px;
+    font-size: 1.2rem;
+    background-color: #007bff;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+.clear-history-button {
+    padding: 8px;
+    font-size: 1rem;
+    background-color: #dc3545;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+.history-list-container {
+    flex-grow: 1;
+    overflow-y: auto;
+    border: 1px solid #ddd;
+    background: white;
+    padding: 10px;
+    border-radius: 5px;
+}
+
+#history-list {
+    list-style: none;
+}
+
+#history-list li {
+    padding: 10px;
+    border-bottom: 1px solid #eee;
+    font-size: 1.2rem;
+    display: flex;
+    justify-content: space-between;
+}
+
+.history-expression {
+    color: #666;
+    margin-right: 10px;
+}
+
+.history-result {
+    font-weight: bold;
+    color: #333;
+}
+
+.history-footer {
+    margin-top: 10px;
+    text-align: right;
+    font-size: 1.2rem;
+    font-weight: bold;
+}
+
+.print-only {
+    display: none;
+}
+
+/* 平板/手機響應式 */
+@media (max-width: 768px) {
+    .main-container {
+        flex-direction: column;
+        height: 100vh;
+        width: 100%;
+        border-radius: 0;
+    }
+    .calculator-section {
+        flex: 0 0 65%; /* 計算機佔 65% 高度 */
+    }
+    .history-section {
+        flex: 1;
+        padding: 10px;
+    }
+    .current-operand {
+        font-size: 3rem;
+    }
+    .btn {
+        font-size: 1.8rem;
+    }
+}
